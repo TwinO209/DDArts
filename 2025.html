@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto2025</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/openseadragon/4.1.0/openseadragon.min.js"></script>
+    <style>
+        html, body {
+        margin: 0;
+        width: 100%;
+        height: 100%;
+        }
+        #viewer {
+        width: 100%;
+        height: 100%;
+        background: #000;
+        }
+    </style>
+</head>
+<body>
+
+<div id="viewer"></div>
+
+<script>
+  OpenSeadragon({
+    id: "viewer",
+    prefixUrl: "https://cdnjs.cloudflare.com/ajax/libs/openseadragon/4.1.0/images/",
+    tileSources: "imagens/imagem.dzi"
+  });
+</script>
+</body>
+</html>
