@@ -1,0 +1,27 @@
+@charset "UTF-8";
+
+* {
+    margin: 0px;
+    padding: 0px
+}
+
+/*Cabeça*/
+header {
+    background-color: black;
+    color: white;
+    height: 160px;
+    text-align: center;
+}
+
+header > h1 {
+    padding: 20px;
+}
+
+header > p {
+    padding: 10px;
+}
+
+/*Meio*/
+main {
+    
+}
