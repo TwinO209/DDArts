@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<image xmlns="http://www.vips.ecs.soton.ac.uk//dzsave" date="2026-02-07T18:19:26.696529-03" version="8.18.0">
+<image xmlns="http://www.vips.ecs.soton.ac.uk//dzsave" date="2026-02-10T15:36:37.375537-03" version="8.18.0">
   <properties>
     <property>
       <name>width</name>
@@ -39,7 +39,7 @@
     </property>
     <property>
       <name>background</name>
-      <value type="VipsArrayDouble">255 255 255 </value>
+      <value type="VipsArrayDouble">0 0 0 </value>
     </property>
     <property>
       <name>vips-sequential</name>
