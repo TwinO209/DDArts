@@ -24,11 +24,24 @@
 <div id="viewer"></div>
 
 <script>
-  OpenSeadragon({
-    id: "viewer",
-    prefixUrl: "https://cdnjs.cloudflare.com/ajax/libs/openseadragon/4.1.0/images/",
-    tileSources: "imagens/DDART25/ddart25.dzi"
-  });
+  var viewer = OpenSeadragon({
+  id: "viewer",
+  prefixUrl: "https://cdnjs.cloudflare.com/ajax/libs/openseadragon/4.1.0/images/",
+  tileSources: "imagens/DDART25/ddart25.dzi"
+});
+
+viewer.addHandler("open", function(){
+
+    var gif = document.createElement("img");
+    gif.src = "imagensAlt/obama-prism.gif";
+    gif.style.width = "100%";
+
+    viewer.addOverlay({
+        element: gif,
+        location: viewer.viewport.imageToViewportRectangle(5220, 9670, 150, 150)
+    });
+
+});
 </script>
 </body>
 </html>

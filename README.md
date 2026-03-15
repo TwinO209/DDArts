@@ -1,2 +1,2 @@
 # DDArts
-Aqui estão os projetos criados pelo (Nik)
+DDArt created by (Niĸ)
