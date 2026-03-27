@@ -98,7 +98,7 @@
         color: rgb(190, 255, 239);
         padding: 8px;
         margin: 0px;
-        width: 100%;
+        width: auto;
         height: auto;
     }
 }
