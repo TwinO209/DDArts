@@ -17,6 +17,25 @@
         height: 100%;
         background: #000;
         }
+        /* CORREÇÃO DOS BOTÕES */
+        .openseadragon-container .openseadragon-button img {
+            width: 28px !important;
+            height: 28px !important;
+        }
+
+        .openseadragon-container .openseadragon-button {
+            width: 28px !important;
+            height: 28px !important;
+        }
+
+        /* opcional: deixa menor ainda em telas grandes */
+        @media (min-width: 1200px) {
+            .openseadragon-container .openseadragon-button {
+                transform: scale(0.8);
+                transform-origin: top right;
+            }
+        }
+    </style>
     </style>
 </head>
 <body>
@@ -27,7 +46,11 @@
   var viewer = OpenSeadragon({
   id: "viewer",
   prefixUrl: "https://cdnjs.cloudflare.com/ajax/libs/openseadragon/4.1.0/images/",
-  tileSources: "imagens/DDART25/ddart25.dzi"
+  tileSources: "imagens/DDART25/ddart25.dzi",
+
+  //melhora posicionamento dos botões
+    showNavigationControl: true,
+    navigationControlAnchor: OpenSeadragon.ControlAnchor.TOP_RIGHT
 });
 
 viewer.addHandler("open", function(){
