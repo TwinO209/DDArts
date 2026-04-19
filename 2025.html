@@ -56,11 +56,27 @@
 viewer.addHandler("open", function(){
 
     var gif = document.createElement("img");
-    gif.src = "imagensAlt/obama-prism.gif";
+    gif.src = "imagensAlt/twinbop.gif";
     gif.style.width = "100%";
 
     viewer.addOverlay({
         element: gif,
+        location: viewer.viewport.imageToViewportRectangle(5220, 9670, 150, 150)
+    });
+
+    // Link
+    var link = document.createElement("a");
+    link.href = "https://twinbop.lol";
+    link.target = "_blank";
+
+    // ocupa o mesmo espaço do gif
+    link.style.display = "block";
+    link.style.width = "100%";
+    link.style.height = "100%";
+    link.style.cursor = "pointer";
+
+    viewer.addOverlay({
+        element: link,
         location: viewer.viewport.imageToViewportRectangle(5220, 9670, 150, 150)
     });
 
