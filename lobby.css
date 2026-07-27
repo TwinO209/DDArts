@@ -1,21 +1,55 @@
-* {
-    margin: 0;
+:root{
+    --border-radius:30px;
+    --border-size:10px;
+    --transition:.35s cubic-bezier(.2,.8,.2,1);
+    --shadow: 0 0 20px rgba(0,0,0,.30);
+    --hover-shadow: 0 0 45px rgba(255,255,255,.75);
+    --glass:rgba(0,0,0,.22);
+    --glass-border:rgba(255,255,255,.18);
+    --blur:12px;
+    --card-size:130px;
 }
 
-body {
-    font-family: Helvetica, sans-serif;
-    overflow: hidden;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-.container {
-    display: flex;
-    height: 100vh;
+html{
+    width:100%;
+    height:100%;
+}
+
+body{
+    width:100%;
+    height:100dvh;
+    min-height:100dvh;
+    font-family:Helvetica,sans-serif;
+    overflow:hidden;
+    background:black;
+    position:relative;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+.container{
+    position:fixed;
+    inset:0;
+    display:flex;
+    width:100%;
+    height:100dvh;
+    overflow:hidden;
+    z-index:-2;
 }
 
 .copy {
     font-size: 12px;
     user-select: none;
-    position: absolute;
+    position: fixed;
     justify-content: center;
     align-items: center;
     display: flex;
@@ -28,151 +62,271 @@ body {
     z-index: 1000;
 }
 
-.photoedits {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    position: absolute;
-    left: 50%;
-    top: -120%;
-    transform: translateX(-50%);
-    width: 200px;
-    height: 200px;
-    background-image: url(imagensAlt/photoedit.png);
-    background-size: 200px;
-    background-repeat: no-repeat;
-    opacity: 0;
-    visibility: hidden;
-    transition: 0.3s;
-    pointer-events: none;
+.back1{
+    width:52%;
+    background-image:url(imagensAlt/back1.png);
+    background-repeat:no-repeat;
+    background-position:center;
+    background-size:auto 200%;
+    transform:scale(1.08);
+    transition:background-position .15s linear, background-size .35s, filter .35s;
+    will-change:background-position;
 }
 
-.ddart:hover .photoedits {
-    transform: translate(-50%, -50%) scale(1.2);
-    opacity: 1;
-    visibility: visible;
-    top: -50%;
+.back2{
+    width:48%;
+    background-image:url(imagensAlt/back2.png);
+    background-repeat:no-repeat;
+    background-position:center;
+    background-size:auto 200%;
+    transform:scale(1.08);
+    transition:background-position .15s linear, background-size .35s, filter .35s;
+    will-change:background-position;
 }
 
-.fanart {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    position: absolute;
-    left: 50%;
-    top: -120%;
-    transform: translateX(-50%);
-    width: 300px;
-    height: 300px;
-    background-image: url(imagensAlt/fanart.png);
-    background-size: 300px;
-    background-repeat: no-repeat;
-    opacity: 0;
-    visibility: hidden;
-    transition: 0.3s;
-    pointer-events: none;
+.card{
+    position:absolute;
+    width:var(--card-size);
+    height:var(--card-size);
+    border-radius:var(--border-radius);
+    border:var(--border-size) solid white;
+    background-size:cover;
+    background-position:center;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    transform:translate(-50%,-50%);
+    cursor:pointer;
+    z-index:20;
+    overflow:visible;
+    transition: transform var(--transition), box-shadow var(--transition), opacity var(--transition), left .45s, top .45s;
+    will-change: transform, opacity;
+    box-shadow:var(--shadow);
+    animation:float 4s ease-in-out infinite;
 }
 
-.art:hover .fanart {
-    transform: translate(-50%, -50%) scale(1.2);
-    opacity: 1;
-    visibility: visible;
-    top: 20%;
+.art{
+    left:25%;
+    top:50%;
+    background-image:url(imagensAlt/back1.png);
 }
 
-.back1 {
-    width: 55%;
-    transform: scale(1.1);
-    background-image: url(imagensAlt/back1.png);
-    background-size: auto 200%; /*auto ajuda a manter o tamanho mesmo mudando tamanho da janela*/
-    background-repeat: no-repeat;
-    background-position: center;
+.ddart{
+    left:75%;
+    top:50%;
+    background-image:url(imagensAlt/back2.png);
 }
 
-.back2 {
-    width: 50%;
-    transform: scale(1.1);
-    background-image: url(imagensAlt/back2.png);
-    background-size: auto 200%; /*auto ajuda a manter o tamanho mesmo mudando tamanho da janela*/
-    background-repeat: no-repeat;
-    background-position: center;
+.preview{
+    position:absolute;
+    left:50%;
+    transform:translateX(-50%);
+    pointer-events:none;
+    opacity:0;
+    visibility:hidden;
+    transition:var(--transition);
 }
 
-.art {
-    background-image: url(imagensAlt/back1.png);
-    left: 25%;
-    top: 50%;
+.fanart{
+    width:300px;
+    height:300px;
+    background-image:url(imagensAlt/fanart.png);
+    background-size:300px;
+    background-repeat:no-repeat;
+    top:-150px;
 }
 
-.ddart {
-    background-image: url(imagensAlt/back2.png);
-    left: 75%;
-    top: 50%;
+.photoedits{
+    width:210px;
+    height:210px;
+    background-image:url(imagensAlt/photoedit.png);
+    background-size:210px;
+    background-repeat:no-repeat;
+    top:-180px;
 }
 
-.caixa {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    position: absolute;
-    left: 50%;
-    top: 120%;
-    transform: translateX(-50%);
-    background: rgba(0, 0, 0, 0.2);
-    color: white;
-    padding: 10px 15px;
-    border-radius: 10px;
-    white-space: nowrap;
-    opacity: 0;
-    visibility: hidden;
-    transition: 0.3s;
-    pointer-events: none;
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255,255,255,0.2);
-    box-shadow: 0 0 20px rgba(255,255,255,0.15);
-    gap: 3px;
+.info{
+    position:absolute;
+    top:150px;
+    left:50%;
+    transform:translateX(-50%);
+    width:290px;
+    padding:14px;
+    border-radius:18px;
+    text-align:center;
+    color:white;
+    background:var(--glass);
+    border:1px solid var(--glass-border);
+    backdrop-filter:blur(var(--blur));
+    opacity:0;
+    visibility:hidden;
+    transition:var(--transition);
+    pointer-events:none;
 }
 
-.art,
-.ddart {
-    background-size: cover;
-    position: absolute;
-    border-radius: 30px;
-    border: 10px solid white;
-    width: 130px;
-    height: 130px;
-    transform: translate(-50%, -50%);
-    z-index: 999;
-
-    animation: float 4s ease-in-out infinite;
-    cursor: pointer;
-    transition: width 0.3s ease, height 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-}
-.art:hover,
-.ddart:hover {
-    box-shadow: 0 0 40px rgba(255,255,255,0.7);
-    transform: translate(-50%, -50%) scale(1.2);
+.info h2{
+    margin-bottom:10px;
 }
 
-.art:hover .caixa,
-.ddart:hover .caixa {
-    opacity: 1;
-    visibility: visible;
-    top: 130%;
+.info p{
+    font-size:14px;
+    line-height:22px;
+}
+
+/* MOBILE */
+
+@media (max-width:900px){
+
+body{
+    min-height:100dvh;
+    overflow:hidden;
+    touch-action: manipulation;
+}
+
+.container{
+    flex-direction:column;
+    height:100dvh;
+}
+
+.back1, .back2{
+    width:100%;
+    height:50dvh;
+    background-size:cover;
+    transform:none;
+    flex:1;
+    transition:flex .55s cubic-bezier(.2,.9,.2,1), filter .35s;
+}
+
+.card{
+    left:50%!important;
+    width:120px;
+    height:120px;
+    transition:top .45s, left .45s, opacity .35s, transform .35s;
+}
+
+.art{
+    top:25%;
+}
+
+.ddart{
+    top:75%;
+}
+
+.preview{
+    opacity:0;
+    visibility:hidden;
+    transition:opacity .35s, transform .35s;
+}
+
+.card.active .preview{
+    opacity:1;
+    visibility:visible;
+    animation:previewUp .45s .15s both;
+}
+
+.info{
+    top:180px;
+    opacity:0;
+    visibility:hidden;
+    transition:opacity .35s, top .35s;
+}
+
+.card.active .info{
+    opacity:1;
+    visibility:visible;
+    animation:textUp .45s .30s both;
+}
+
+.overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.45);
+    backdrop-filter:blur(4px);
+    opacity:0;
+    pointer-events:none;
+    transition:.35s;
+    z-index:15;
+}
+
+.overlay.show{
+    opacity:1;
+    pointer-events:auto;
+}
+
+/*FORA DO MOBILE (JS)*/
+.card.active{
+    animation:none;
+    left:50%!important;
+    top:50%!important;
+    transform:translate(-50%,-50%) scale(1);
+    width:170px;
+    height:170px;
+    z-index:999;
+    transition:top .45s cubic-bezier(.2,.9,.2,1),left .45s cubic-bezier(.2,.9,.2,1),width .35s,height .35s,transform .35s;
+}
+
+.card.hide{
+    opacity:0;
+    pointer-events:none;
+    transform:translate(-50%,-50%) scale(.8);
+}
+
+} /* Fim do mobile*/
+
+/* Complemento hover */
+@media (hover:hover) and (pointer: fine){
+.card:hover{
+    transform:translate(-50%,-50%) scale(1.12);
+    box-shadow:var(--hover-shadow);
+}
+.card:hover .preview{
+    opacity:1;
+    visibility:visible;
+    transform:translateX(-50%) scale(1.08);
+}
+
+.card:hover .info{
+    opacity:1;
+    visibility:visible;
+}
+.card{
+    animation:float 4s ease-in-out infinite;
+}
+}
+
+/*ANIMAÇÕES*/
+
+@keyframes previewUp{
+
+from{
+    opacity:0;
+    transform:translate(-50%,20px)scale(.8);
+}
+
+to{
+    opacity:1;
+    transform:translate(-50%,0)scale(1);
+}
+}
+
+@keyframes textUp{
+
+from{
+    opacity:0;
+    transform:translate(-50%,40px);
+}
+
+to{
+    opacity:1;
+    transform:translate(-50%,0);
+}
 }
 
 @keyframes float {
-    0%, 100% {
-        margin-top: -20px;
+    0%,100%{
+        transform:translate(-50%,-50%) translateY(-10px);
     }
-    50% {
-        margin-top: 20px;
+    50%{
+        transform:translate(-50%,-50%) translateY(10px);
     }
 }

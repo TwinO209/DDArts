@@ -2,33 +2,52 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="lobby.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>DDArt</title>
+    <link rel="stylesheet" href="lobby.css">
 </head>
 <body>
-    <a href="fanarts.html" class="art">
-        <div class="fanart"></div>
-        <div class="caixa">
-        <h3>FanArts</h3>
-        <p>Here you can apreciate some of the coolest FanArts <br> made by teeworld lovers!</p>
-        </div>
-    </a>
-    <a href="projects.html" class="ddart">
-        <div class="photoedits"></div>
-        <div class="caixa">
-        <h3>PhotoEdits</h3>
-        <p>There are three diferent projects, bringing together <br> so much players for an gigantic edited image! <br> Enjoy it :]</p>
-        </div>
-    </a>
 
-    <div class="copy"><p>Copyright © 2026 Niĸ All rights reserved</p></div>
-
+    <!-- Fundo -->
     <div class="container">
-        <div class="back1">
+        <div class="back1"></div>
+        <div class="back2"></div>
+    </div>
+
+    <div class="overlay"></div>
+
+    <!-- FANART -->
+    <a href="fanarts.html"
+       class="card art"
+       data-page="fanarts.html">
+        <div class="preview fanart"></div>
+        <div class="info">
+            <h2>FanArts</h2>
+            <p>
+                Here you can apreciate some of the coolest
+                FanArts made by Teeworlds lovers!
+            </p>
         </div>
-        <div class="back2">
+    </a>
+
+    <!-- PHOTOEDITS -->
+    <a href="projects.html"
+       class="card ddart"
+       data-page="projects.html">
+        <div class="preview photoedits"></div>
+        <div class="info">
+            <h2>PhotoEdits</h2>
+            <p>
+                There are three different projects,
+                bringing together many players into
+                cool edited images.
+            </p>
         </div>
+    </a>
+
+    <!-- Copyright -->
+    <div class="copy">
+        <p>Copyright © 2026 Niĸ All rights reserved</p>
     </div>
 
     <script src="lobby.js"></script>
