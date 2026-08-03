@@ -102,7 +102,6 @@ a{
     transition: transform var(--transition), box-shadow var(--transition), opacity var(--transition), left .45s, top .45s;
     will-change: transform, opacity;
     box-shadow:var(--shadow);
-    animation:float 4s ease-in-out infinite;
 }
 
 .art{
@@ -133,7 +132,8 @@ a{
     background-image:url(imagensAlt/fanart.png);
     background-size:300px;
     background-repeat:no-repeat;
-    top:-150px;
+    top:-100px;
+    left: 100px;
 }
 
 .photoedits{
@@ -142,7 +142,8 @@ a{
     background-image:url(imagensAlt/photoedit.png);
     background-size:210px;
     background-repeat:no-repeat;
-    top:-180px;
+    top:-120px;
+    left: 105px;
 }
 
 .info{
@@ -212,6 +213,16 @@ body{
     top:75%;
 }
 
+.fanart {
+top: -180px;
+left: 76px;
+}
+
+.photoedits{
+top: -180px;
+left: 76px;
+}
+
 .preview{
     opacity:0;
     visibility:hidden;
@@ -278,6 +289,8 @@ body{
 .card:hover{
     transform:translate(-50%,-50%) scale(1.12);
     box-shadow:var(--hover-shadow);
+    --scale:1.15;
+    box-shadow:var(--hover-shadow);
 }
 .card:hover .preview{
     opacity:1;
@@ -290,6 +303,15 @@ body{
     visibility:visible;
 }
 .card{
+    --scale:1;
+    transform:translate(-50%,-50%) scale(var(--scale));
+}
+.cardFloat{
+    width:100%;
+    height:100%;
+    border-radius:inherit;
+    background-size:cover;
+    background-position:center;
     animation:float 4s ease-in-out infinite;
 }
 }
@@ -324,9 +346,9 @@ to{
 
 @keyframes float {
     0%,100%{
-        transform:translate(-50%,-50%) translateY(-10px);
+        transform:translate(-50%,-50%) translateY(-10px) scale(var(--scale));
     }
     50%{
-        transform:translate(-50%,-50%) translateY(10px);
+        transform:translate(-50%,-50%) translateY(10px) scale(var(--scale));
     }
 }

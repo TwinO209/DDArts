@@ -48,35 +48,39 @@ if(!isMobile){
 
 /* MOBILE */
 
-cards.forEach(card=>{
-    card.addEventListener("click",(e)=>{
-        if(activeCard!==card){
-            e.preventDefault();
-            activeCard=card;
-            overlay.classList.add("show");
-            cards.forEach(c=>{
-                c.classList.remove("active");
-                c.classList.remove("hide");
-            });
-            card.classList.add("active");
-            cards.forEach(c=>{
-                if(c!==card){
-                    c.classList.add("hide");
-                }
-            });
-            return;
-        }
-    });
-});
+/* MOBILE */
 
-overlay.addEventListener("click",()=>{
-    activeCard=null;
-    overlay.classList.remove("show");
-    cards.forEach(c=>{
-        c.classList.remove("active");
-        c.classList.remove("hide");
+if (isMobile) {
+    cards.forEach(card => {
+        card.addEventListener("click", (e) => {
+            if (activeCard !== card) {
+                e.preventDefault();
+                activeCard = card;
+                overlay.classList.add("show");
+                cards.forEach(c => {
+                    c.classList.remove("active");
+                    c.classList.remove("hide");
+                });
+                card.classList.add("active");
+                cards.forEach(c => {
+                    if (c !== card) {
+                        c.classList.add("hide");
+                    }
+                });
+                return;
+            }
+        });
     });
-});
+
+    overlay.addEventListener("click", () => {
+        activeCard = null;
+        overlay.classList.remove("show");
+        cards.forEach(c => {
+            c.classList.remove("active");
+            c.classList.remove("hide");
+        });
+    });
+}
 
 /* GIROSCÓPIO */
 
