@@ -132,8 +132,8 @@ a{
     background-image:url(imagensAlt/fanart.png);
     background-size:300px;
     background-repeat:no-repeat;
-    top:-100px;
-    left: 100px;
+    top:-150px;
+    left: 60px;
 }
 
 .photoedits{
@@ -142,8 +142,8 @@ a{
     background-image:url(imagensAlt/photoedit.png);
     background-size:210px;
     background-repeat:no-repeat;
-    top:-120px;
-    left: 105px;
+    top:-180px;
+    left: 60px;
 }
 
 .info{
@@ -174,6 +174,10 @@ a{
     line-height:22px;
 }
 
+/* MOBILE */
+/* MOBILE */
+/* MOBILE */
+/* MOBILE */
 /* MOBILE */
 
 @media (max-width:900px){
@@ -306,14 +310,6 @@ left: 76px;
     --scale:1;
     transform:translate(-50%,-50%) scale(var(--scale));
 }
-.cardFloat{
-    width:100%;
-    height:100%;
-    border-radius:inherit;
-    background-size:cover;
-    background-position:center;
-    animation:float 4s ease-in-out infinite;
-}
 }
 
 /*ANIMAÇÕES*/
@@ -344,11 +340,32 @@ to{
 }
 }
 
-@keyframes float {
-    0%,100%{
-        transform:translate(-50%,-50%) translateY(-10px) scale(var(--scale));
+/*FLOAT DOS CARDS*/
+
+@media (hover: hover) and (pointer: fine) {
+
+    .card {
+        animation: cardFloat 4s ease-in-out infinite;
     }
-    50%{
-        transform:translate(-50%,-50%) translateY(10px) scale(var(--scale));
+
+    .card:hover {
+        animation-play-state: paused;
     }
+
+}
+
+
+/*ANIMAÇÃO*/
+
+@keyframes cardFloat {
+
+    0%,
+    100% {
+        margin-top: -20px;
+    }
+
+    50% {
+        margin-top: 20px;
+    }
+
 }

@@ -1,57 +1,119 @@
+:root {
+    --border-radius: 30px;
+    --border-size: 10px;
+    --transition: .35s cubic-bezier(.2,.8,.2,1);
+    --shadow: 0 0 20px rgba(0,0,0,.30);
+    --hover-shadow: 0 0 45px rgba(255,255,255,.75);
+    --glass: rgba(0,0,0,.22);
+    --glass-border: rgba(255,255,255,.18);
+    --blur: 12px;
+    --card-size: 130px;
+}
+
+
+/*RESET*/
+
 * {
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    width: 100%;
+    height: 100%;
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
+    width: 100%;
+    height: 100dvh;
+    min-height: 100dvh;
+    font-family: Helvetica, Arial, sans-serif;
     overflow: hidden;
+    background: black;
+    position: relative;
 }
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/*BACKGROUND*/
 
 .background {
     position: fixed;
     inset: 0;
+    width: 100%;
+    height: 100%;
     background-image: url(imagensAlt/img1.png);
+    background-repeat: no-repeat;
+    background-position: center;
     background-size: 200%;
     transform: scale(1.1);
-    background-position: center;
-    transition: background-image 0.3s ease;
+    transition:background-image .3s ease, background-position .15s linear, filter .35s;
+    will-change: background-position;
     z-index: -1;
 }
+
+/*COPYRIGHT*/
 
 .copy {
     font-size: 12px;
     user-select: none;
-    position: absolute;
+    position: fixed;
+    display: flex;
     justify-content: center;
     align-items: center;
-    display: flex;
-    color: rgba(240, 255, 255, 0.5);
+    color: rgba(240,255,255,.5);
     bottom: 1%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 2px 5px;
     backdrop-filter: blur(10px);
-    border: 2px solid rgba(255, 255, 255, 0.2);
-    left: 50%; transform: translateX(-50%);
+    border: 2px solid rgba(255,255,255,.2);
     border-radius: 3px;
     z-index: 1000;
 }
 
+/*BACK BUTTON*/
+
 .vlt {
     position: absolute;
-    border-radius: 20px;
     width: 70px;
     height: 70px;
+    left: 4%;
+    top: 9%;
     transform: translate(-50%, -50%);
-    z-index: 999;
-    cursor: pointer;
-    transition: width 0.3s ease, height 0.3s ease, transform 0.3s ease;
+    border-radius: 20px;
     background-image: url(imagensAlt/seta.png);
     background-size: 70px 60px;
     background-repeat: no-repeat;
-    left: 4%;
-    top: 9%;
+    cursor: pointer;
+    z-index: 999;
+    transition:transform .3s ease, width .3s ease, height .3s ease;
+    -webkit-tap-highlight-color:transparent;
 }
 
 .vlt:hover {
     transform: translate(-50%, -50%) scale(1.2);
+}
+
+/*BACK TEXT*/
+
+.caixa2 {
+    position: absolute;
+    left: 50%;
+    top: 120%;
+    transform: translateX(-50%);
+    padding: 10px 15px;
+    color: rgba(255,255,255,.5);
+    text-align: center;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transition);
+    pointer-events: none;
 }
 
 .vlt:hover .caixa2 {
@@ -60,189 +122,404 @@ body {
     top: 100%;
 }
 
+/*CONTAINER*/
+
 .container {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 50px;
-    height: 100vh;
+    width: 100%;
+    height: 100dvh;
 }
 
-.caixa {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+/*CARDS*/
+
+.btn11,
+.btn22,
+.btn33 {
     position: absolute;
-    left: 50%;
-    top: 120%;
-    transform: translateX(-50%);
-    background: rgba(0, 0, 0, 0.2);
-    color: white;
-    padding: 10px 15px;
-    border-radius: 10px;
-    white-space: nowrap;
-    opacity: 0;
-    visibility: hidden;
-    transition: 0.3s;
-    pointer-events: none;
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255,255,255,0.2);
-    box-shadow: 0 0 20px rgba(255,255,255,0.15);
-    gap: 3px;
+    width: var(--card-size);
+    height: var(--card-size);
+    border-radius: var(--border-radius);
+    border: var(--border-size) solid white;
+    background-size: cover;
+    background-position: center;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+    z-index: 20;
+    box-shadow: var(--shadow);
+    transition:transform var(--transition), box-shadow var(--transition), opacity var(--transition);
+    will-change: transform;
+    -webkit-tap-highlight-color:transparent;
 }
 
-.caixa2 {
-    text-align: center;
-    position: absolute;
-    left: 50%;
-    top: 120%;
-    transform: translateX(-50%);
-    color: rgba(255, 255, 255, 0.5);
-    padding: 10px 15px;
-    border-radius: 10px;
-    white-space: nowrap;
-    opacity: 0;
-    visibility: hidden;
-    transition: 0.3s;
-    pointer-events: none;
-    gap: 3px;   
-}
+/*CARD 1*/
 
-.teefrenzy {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    position: absolute;
-    left: 268%;
-    top: -350%;
-    transform: translateX(-40%);
-    width: 700px;
-    height: 700px;
-    background-image: url(imagensAlt/teefrenzy.png);
-    background-size: 700px;
-    background-repeat: no-repeat;
-    opacity: 0;
-    visibility: hidden;
-    transition: 0.3s;
-    pointer-events: none;
-}
-
-.btn11:hover .teefrenzy {
-    transform: translate(-50%, -50%) scale(1.2);
-    opacity: 1;
-    visibility: visible;
-    top: 150%;
-}
-
-.dualmap {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    position: absolute;
-    left: 70%;
-    top: -350%;
-    transform: translateX(-50%);
-    width: 600px;
-    height: 600px;
-    background-image: url(imagensAlt/dualmap.png);
-    background-size: 600px;
-    background-repeat: no-repeat;
-    opacity: 0;
-    visibility: hidden;
-    transition: 0.3s;
-    pointer-events: none;
-}
-
-.btn22:hover .dualmap {
-    transform: translate(-50%, -50%) scale(1.2);
-    opacity: 1;
-    visibility: visible;
-    top: 100%;
-}
-
-.krismas23 {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    position: absolute;
-    left: -168%;
-    top: -350%;
-    transform: translateX(-60%);
-    width: 700px;
-    height: 700px;
-    background-image: url(imagensAlt/krismas23.png);
-    background-size: 700px;
-    background-repeat: no-repeat;
-    opacity: 0;
-    visibility: hidden;
-    transition: 0.3s;
-    pointer-events: none;
-}
-
-.btn33:hover .krismas23 {
-    transform: translate(-50%, -50%) scale(1.2);
-    opacity: 1;
-    visibility: visible;
-    top: 150%;
-}
-
-.btn11{
-    animation: float1 4s ease-in-out infinite;
-    transition: width 0.3s ease, height 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
-    background-image: url(imagensAlt/img1.png);
+.btn11 {
     left: 25%;
     top: 50%;
+    background-image: url(imagensAlt/img1.png);
+    animation: float1 4s ease-in-out infinite;
 }
 
-.btn22{
-    animation: float2 4s ease-in-out infinite;
-    transition: width 0.3s ease, height 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
-    background-image: url(imagensAlt/img3.png);
+
+/*CARD 2*/
+
+.btn22 {
     left: 50%;
     top: 50%;
+    background-image: url(imagensAlt/img3.png);
+    animation: float2 4s ease-in-out infinite;
 }
 
-.btn33{
-    animation: float3 4s ease-in-out infinite;
-    transition: width 0.3s ease, height 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
-    background-image: url(imagensAlt/img2.png);
+/*CARD 3*/
+
+.btn33 {
     left: 75%;
     top: 50%;
+    background-image: url(imagensAlt/img2.png);
+    animation: float3 4s ease-in-out infinite;
 }
 
-.btn11, .btn22, .btn33 {
-    background-size: cover;
+/*PC HOVER*/
+
+@media (hover:hover) and (pointer:fine) {
+    .btn11:hover,
+    .btn22:hover,
+    .btn33:hover {
+        transform: translate(-50%, -50%) scale(1.12);
+        box-shadow: var(--hover-shadow);
+    }
+
+    .btn11:hover .caixa,
+    .btn22:hover .caixa,
+    .btn33:hover .caixa {
+        opacity: 1;
+        visibility: visible;
+        top: 130%;
+    }
+
+    .btn11:hover .teefrenzy,
+    .btn22:hover .dualmap,
+    .btn33:hover .krismas23 {
+        opacity: 1;
+        visibility: visible;
+        transform: translate(-50%, -50%) scale(1.08);
+    }
+}
+
+
+/*CAIXA*/
+
+.caixa {
     position: absolute;
-    border-radius: 30px;
-    border: 10px solid white;
-    width: 130px;
-    height: 130px;
-    transform: translate(-50%, -50%);
-    z-index: 999;
-    cursor: pointer;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    left: 50%;
+    top: 120%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: max-content;
+    max-width: 90vw;
+    padding: 10px 15px;
+    gap: 3px;
+    color: white;
+    text-align: center;
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    border-radius: 10px;
+    backdrop-filter: blur(var(--blur));
+    box-shadow: 0 0 20px rgba(255,255,255,.15);
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transition);
+    pointer-events: none;
 }
 
-.btn11:hover, .btn22:hover, .btn33:hover {
-    box-shadow: 0 0 40px rgba(255,255,255,0.7);
-    transform: translate(-50%, -50%) scale(1.2);
+.caixa h3 {
+    margin-bottom: 5px;
 }
 
-.btn11:hover .caixa, .btn22:hover .caixa, .btn33:hover .caixa {
-    opacity: 1;
-    visibility: visible;
-    top: 130%;
+.caixa p {
+    font-size: 14px;
+    line-height: 20px;
 }
+
+/*PREVIEWS*/
+
+.teefrenzy,
+.dualmap,
+.krismas23 {
+    position: absolute;
+    background-repeat: no-repeat;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: var(--transition);
+    z-index: -1;
+}
+
+/* TEE FRENZY */
+
+.teefrenzy {
+    width: 700px;
+    height: 700px;
+    left: 338%;
+    top: 140%;
+    transform: translateX(-40%);
+    background-image: url(imagensAlt/teefrenzy.png);
+    background-size: 700px;
+}
+
+/* DUAL MAP */
+
+.dualmap {
+    width: 600px;
+    height: 600px;
+    left: 70%;
+    top: 100%;
+    transform: translateX(-50%);
+    background-image: url(imagensAlt/dualmap.png);
+    background-size: 600px;
+}
+
+/* CHRISTMAS 2023 */
+
+.krismas23 {
+    width: 700px;
+    height: 700px;
+    left: -230%;
+    top: 150%;
+    transform: translateX(-60%);
+    background-image: url(imagensAlt/krismas23.png);
+    background-size: 700px;
+}
+
+/*MOBILE*/
+
+@media (max-width:900px) {
+
+    body {
+        min-height: 100dvh;
+        overflow: hidden;
+        touch-action: manipulation;
+    }
+
+    /* BACKGROUND */
+
+    .background {
+        background-size: cover;
+        transform: none;
+        transition:background-image .3s ease, filter .35s;
+    }
+
+    /* CONTAINER */
+
+    .container {
+        flex-direction: column;
+        gap: 0;
+        height: 100dvh;
+    }
+
+    /*COPYRIGHT*/
+
+    .copy {
+        font-size: 11px;
+        bottom: 1%;
+    }
+
+    /*BACK BUTTON*/
+
+    .vlt {
+        left: 12%;
+        top: 8%;
+        transform: translate(-50%, -50%) scale(.85);
+    }
+
+    .vlt:hover {
+        transform: translate(-50%, -50%) scale(.85);
+    }
+
+    /* CARDS */
+
+    .btn11,
+    .btn22,
+    .btn33 {
+        left: 50%;
+        width: 120px;
+        height: 120px;
+        border-width: 8px;
+        transition:top .45s cubic-bezier(.2,.9,.2,1), left .45s cubic-bezier(.2,.9,.2,1), width .35s, height .35s, opacity .35s, transform .35s;
+    }
+
+    .btn11 {
+        top: 25%;
+    }
+    .btn22 {
+        top: 50%;
+    }
+    .btn33 {
+        top: 75%;
+    }
+
+    /*DESATIVA HOVER NO MOBILE*/
+
+    .btn11:hover,
+    .btn22:hover,
+    .btn33:hover {
+        box-shadow: var(--shadow);
+        transform: translate(-50%, -50%);
+    }
+
+    /*ACTIVE CARD*/
+
+    .btn11.active,
+    .btn22.active,
+    .btn33.active {
+        left: 50% !important;
+        top: 50% !important;
+        width: 170px;
+        height: 170px;
+        transform: translate(-50%, -50%) scale(1);
+        z-index: 999;
+        transition:top .45s cubic-bezier(.2,.9,.2,1), left .45s cubic-bezier(.2,.9,.2,1), width .35s, height .35s, transform .35s;
+    }
+
+    /*OUTROS CARDS*/
+
+    .btn11.hide,
+    .btn22.hide,
+    .btn33.hide {
+        opacity: 0;
+        pointer-events: none;
+        transform:translate(-50%, -50%) scale(.8);
+    }
+
+    /*INFORMATION*/
+
+    .caixa {
+        top: 150px;
+        width: 85vw;
+        max-width: 400px;
+        white-space: normal;
+        padding: 12px;
+        opacity: 0;
+        visibility: hidden;
+        transition:opacity .35s, top .35s;
+    }
+
+    .btn11.active .caixa,
+    .btn22.active .caixa,
+    .btn33.active .caixa {
+        opacity: 1;
+        visibility: visible;
+        top: 180px;
+        animation: textUp .45s .25s both;
+    }
+
+    /*PREVIEWS MOBILE*/
+
+    .teefrenzy,
+    .dualmap,
+    .krismas23 {
+        opacity: 0;
+        visibility: hidden;
+        transition:opacity .35s, transform .35s;
+    }
+
+    .btn11.active .teefrenzy,
+    .btn22.active .dualmap,
+    .btn33.active .krismas23 {
+        opacity: 1;
+        visibility: visible;
+        animation: previewUp .45s .1s both;
+    }
+
+    .teefrenzy {
+        width: 700px;
+        height: 700px;
+        left: 55%;
+        top: -180px;
+        background-size: 700px;
+    }
+
+    .dualmap {
+        width: 650px;
+        height: 650px;
+        left: 66%;
+        top: -200px;
+        background-size: 650px;
+    }
+
+    .krismas23 {
+        width: 700px;
+        height: 700px;
+        left: 50%;
+        top: -180px;
+        background-size: 700px;
+    }
+
+    /*MOBILE OVERLAY*/
+
+    .overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,.45);
+        backdrop-filter: blur(4px);
+        opacity: 0;
+        pointer-events: none;
+        transition: .35s;
+        z-index: 15;
+    }
+
+    .overlay.show {
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    /*MOBILE FLOAT*/
+
+    .btn11,
+    .btn22,
+    .btn33 {
+        animation: none;
+    }
+
+}
+
+/*ANIMATIONS*/
+
+@keyframes previewUp {
+
+    from {
+        opacity: 0;
+        transform:translate(-50%, 20px) scale(.8);
+    }
+    to {
+        opacity: 1;
+        transform:translate(-50%, 0) scale(1);
+    }
+}
+
+@keyframes textUp {
+
+    from {
+        opacity: 0;
+        transform:translate(-50%, 40px);
+    }
+    to {
+        opacity: 1;
+        transform:translate(-50%, 0);
+    }
+}
+
+/*FLOATING*/
 
 @keyframes float1 {
+
     0%, 100% {
         margin-top: -20px;
     }
@@ -251,7 +528,9 @@ body {
     }
 }
 
+
 @keyframes float2 {
+
     0%, 100% {
         margin-top: -20px;
     }
@@ -260,22 +539,13 @@ body {
     }
 }
 
+
 @keyframes float3 {
+
     0%, 100% {
         margin-top: -20px;
     }
     60% {
         margin-top: 20px;
-    }
-}
-
-/* Celular */
-@media (max-width: 768px) {
-    .container {
-        flex-direction: column;
-    }
-
-    .card {
-        width: 100%;
     }
 }
