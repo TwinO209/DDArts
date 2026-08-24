@@ -439,27 +439,27 @@ a {
     }
 
     .teefrenzy {
-        width: 700px;
-        height: 700px;
+        width: 300px;
+        height: 300px;
         left: 55%;
-        top: -180px;
-        background-size: 700px;
+        top: -110px;
+        background-size: 300px;
     }
 
     .dualmap {
-        width: 650px;
-        height: 650px;
+        width: 450px;
+        height: 450px;
         left: 66%;
-        top: -200px;
-        background-size: 650px;
+        top: -170px;
+        background-size: 450px;
     }
 
     .krismas23 {
-        width: 700px;
-        height: 700px;
+        width: 300px;
+        height: 300px;
         left: 50%;
-        top: -180px;
-        background-size: 700px;
+        top: -110px;
+        background-size: 300px;
     }
 
     /*MOBILE OVERLAY*/

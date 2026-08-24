@@ -102,6 +102,7 @@ a{
     transition: transform var(--transition), box-shadow var(--transition), opacity var(--transition), left .45s, top .45s;
     will-change: transform, opacity;
     box-shadow:var(--shadow);
+    -webkit-tap-highlight-color:transparent;
 }
 
 .art{
