@@ -265,37 +265,37 @@ a {
 /* TEE FRENZY */
 
 .teefrenzy {
-    width: 700px;
-    height: 700px;
+    width: 300px;
+    height: 300px;
     left: 338%;
     top: 140%;
     transform: translateX(-40%);
     background-image: url(imagensAlt/teefrenzy.png);
-    background-size: 700px;
+    background-size: 300px;
 }
 
 /* DUAL MAP */
 
 .dualmap {
-    width: 600px;
-    height: 600px;
+    width: 300px;
+    height: 300px;
     left: 70%;
     top: 100%;
     transform: translateX(-50%);
     background-image: url(imagensAlt/dualmap.png);
-    background-size: 600px;
+    background-size: 300px;
 }
 
 /* CHRISTMAS 2023 */
 
 .krismas23 {
-    width: 700px;
-    height: 700px;
+    width: 300px;
+    height: 300px;
     left: -230%;
     top: 150%;
     transform: translateX(-60%);
     background-image: url(imagensAlt/krismas23.png);
-    background-size: 700px;
+    background-size: 300px;
 }
 
 /*MOBILE*/
