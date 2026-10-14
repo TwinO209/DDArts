@@ -51,6 +51,7 @@ body {
     background-repeat: no-repeat;
     left: 20px;
     top: 20px;
+    -webkit-tap-highlight-color:transparent;
 }
 
 .vlt:hover {
@@ -105,6 +106,11 @@ body {
     height: 100%;
     object-fit: cover;
     transition: transform .3s;
+}
+
+a {
+    color: wheat;
+    text-decoration: none;
 }
 
 /*ARTS*/
@@ -189,6 +195,7 @@ body {
         left: 12px;
         top: 12px;
         background-size: 55px 48px;
+        -webkit-tap-highlight-color:transparent;
     }
 
     .copy {
@@ -202,6 +209,11 @@ body {
         width: 100%;
         flex-direction: column;
         gap: 40px;
+    }
+
+    a {
+    color: wheat;
+    text-decoration: none;
     }
 
     .art,
