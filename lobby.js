@@ -1,6 +1,9 @@
 const bgs = document.querySelectorAll(".back1, .back2");
 const cards = document.querySelectorAll(".card");
 const overlay = document.querySelector(".overlay");
+const aboutButton = document.querySelector(".about");
+const aboutWindow = document.querySelector(".about-window");
+const aboutClose = document.querySelector(".about-close");
 
 const isMobile =
     window.matchMedia("(max-width:900px)").matches ||
@@ -94,3 +97,20 @@ if(isMobile && window.DeviceOrientationEvent){
         });
     });
 }
+
+/* ABOUT */
+
+// OPEN
+aboutButton.addEventListener("click", () => {
+    aboutWindow.classList.add("active");
+});
+// CLOSE BUTTON
+aboutClose.addEventListener("click", () => {
+    aboutWindow.classList.remove("active");
+});
+// CLICK OUTSIDE
+aboutWindow.addEventListener("click", (e) => {
+    if (e.target === aboutWindow) {
+        aboutWindow.classList.remove("active");
+    }
+});
