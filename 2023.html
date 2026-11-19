@@ -37,9 +37,32 @@
                 transform-origin: top right;
             }
         }
+
+        .credits {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            z-index: 9999;
+            color: white;
+            font-family: Arial, sans-serif;
+            font-size: 12px;
+        }
+
+        .credits a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+        }
+
+        .credits a:hover {
+            opacity: 1;
+        }
     </style>
 </head>
 <body>
+
+<div class="credits"><a href="credits23.html">credits</a></div>
 
 <div id="viewer"></div>
 

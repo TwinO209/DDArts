@@ -23,6 +23,7 @@ body {
 }
 
 .copy {
+    font-size: 12px;
     height: 100px;
     user-select: none;
     text-align: center;

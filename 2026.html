@@ -29,16 +29,39 @@
             height: 28px !important;
         }
 
-        /* opcional: deixa menor ainda em telas grandes */
+        /* deixa menor ainda em telas grandes */
         @media (min-width: 1200px) {
             .openseadragon-container .openseadragon-button {
                 transform: scale(0.8);
                 transform-origin: top right;
             }
         }
+
+        .credits {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            z-index: 9999;
+            color: white;
+            font-family: Arial, sans-serif;
+            font-size: 12px;
+        }
+
+        .credits a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+        }
+
+        .credits a:hover {
+            opacity: 1;
+        }
     </style>
 </head>
 <body>
+
+<div class="credits"><a href="credits26.html">credits</a></div>
 
 <div id="viewer"></div>
 
@@ -74,6 +97,15 @@ viewer.addHandler("open", function(){
     link.style.width = "100%";
     link.style.height = "100%";
     link.style.cursor = "pointer";
+
+    // impede que o zoom atrapalhe o clique no gif
+    link.addEventListener("pointerdown", function(event) {
+        event.stopPropagation();
+    });
+
+    link.addEventListener("click", function(event) {
+        event.stopPropagation();
+    });
 
     viewer.addOverlay({
         element: link,
